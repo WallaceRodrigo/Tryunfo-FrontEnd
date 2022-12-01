@@ -10,11 +10,13 @@ const INITIAL_STATE = {
   cardAttr2: '',
   cardAttr3: '',
   cardImage: '',
-  cardRare: '',
+  cardRare: 'normal',
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
 };
+
+const newCardState = [];
 
 class App extends React.Component {
   state = {
@@ -59,6 +61,28 @@ class App extends React.Component {
     }, this.saveButtonValidation);
   };
 
+  onSaveButtonClick = (e) => {
+    e.preventDefault();
+
+    newCardState.push(this.state);
+
+    this.setState({
+      cardState: newCardState,
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      isSaveButtonDisabled: true,
+      cardTrunfo: false,
+    });
+
+    const { cardState } = this.state;
+    console.log(cardState);
+  };
+
   render() {
     const {
       cardName,
@@ -85,6 +109,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handleChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
