@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   cardAttr3: '',
   cardImage: '',
   cardRare: 'normal',
+  cardState: [],
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
@@ -99,6 +100,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      cardState,
     } = this.state;
 
     return (
@@ -127,6 +129,23 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <div>
+          {
+            cardState.map((state) => (
+              <Card
+                key={ state.cardName }
+                cardName={ state.cardName }
+                cardDescription={ state.cardDescription }
+                cardAttr1={ state.cardAttr1 }
+                cardAttr2={ state.cardAttr2 }
+                cardAttr3={ state.cardAttr3 }
+                cardImage={ state.cardImage }
+                cardRare={ state.cardRare }
+                cardTrunfo={ state.cardTrunfo }
+              />
+            ))
+          }
+        </div>
       </div>
     );
   }
