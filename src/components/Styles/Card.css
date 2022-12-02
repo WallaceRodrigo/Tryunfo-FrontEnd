@@ -1,5 +1,6 @@
 .CardDiv {
   align-items: center;
+  background-color: blue;
   display: flex;
   flex-direction: column;
   padding: 50px;

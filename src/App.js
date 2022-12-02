@@ -10,14 +10,12 @@ const INITIAL_STATE = {
   cardAttr2: '',
   cardAttr3: '',
   cardImage: '',
-  cardRare: 'normal',
+  cardRare: '',
   cardState: [],
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
 };
-
-const newCardState = [];
 
 class App extends React.Component {
   state = {
@@ -65,10 +63,13 @@ class App extends React.Component {
   onSaveButtonClick = (e) => {
     e.preventDefault();
 
-    newCardState.push(this.state);
+    const { state } = this;
+
+    this.setState((prevState) => ({
+      cardState: [...prevState.cardState, state],
+    }));
 
     this.setState({
-      cardState: newCardState,
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -84,9 +85,39 @@ class App extends React.Component {
   hasTrunfo = () => {
     const { cardState } = this.state;
     cardState.some((state) => (
-      state.cardTrunfo === true ? this.setState({ hasTrunfo: true }) : ''
+      state.cardTrunfo === true ? this.setState({ hasTrunfo: true })
+        : ''
     ));
   };
+
+  onClickDelete = (state) => {
+    const { cardState } = this.state;
+    const filteredState = cardState.filter((card) => card !== state);
+
+    this.setState({
+      cardState: filteredState,
+    });
+
+    if (state.cardTrunfo) {
+      this.setState({ hasTrunfo: false });
+    }
+  };
+
+  // cardState.map((state) => {
+  //   if (state.cardName === targetName) {
+  //     const index = newCardState.indexOf(state);
+  //     newCardState.splice(index, 1);
+  //     if (state.cardTrunfo) {
+  //       this.setState({
+  //         hasTrunfo: false,
+  //       });
+  //     }
+  //   }
+  //   this.setState({
+  //     cardState: newCardState,
+  //   });
+  //   return '';
+  // });
 
   render() {
     const {
@@ -129,7 +160,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        <div>
+        <div className="SavedCards">
           {
             cardState.map((state) => (
               <Card
@@ -142,6 +173,8 @@ class App extends React.Component {
                 cardImage={ state.cardImage }
                 cardRare={ state.cardRare }
                 cardTrunfo={ state.cardTrunfo }
+                onClickDelete={ () => (this.onClickDelete(state)) }
+                deleteButton
               />
             ))
           }
