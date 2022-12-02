@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   cardImage: '',
   cardRare: 'normal',
   cardTrunfo: false,
-  hasTrunfo: false,
+  hasTrunfo: true,
   isSaveButtonDisabled: true,
 };
 
@@ -77,10 +77,14 @@ class App extends React.Component {
       cardRare: 'normal',
       isSaveButtonDisabled: true,
       cardTrunfo: false,
-    });
+    }, this.hasTrunfo);
+  };
 
+  hasTrunfo = () => {
     const { cardState } = this.state;
-    console.log(cardState);
+    cardState.some((state) => (
+      state.cardTrunfo === true ? this.setState({ hasTrunfo: false }) : ''
+    ));
   };
 
   render() {
@@ -93,6 +97,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state;
 
@@ -107,6 +112,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.handleChange }
           onSaveButtonClick={ this.onSaveButtonClick }

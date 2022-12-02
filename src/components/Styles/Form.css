@@ -1,0 +1,24 @@
+.NewCardForm {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.NewCardForm label {
+  padding: 5px;
+}
+
+label:nth-child( 4 ), label:nth-child( 5 ), label:nth-child( 6 ), label:nth-child( 7 ) {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+label:nth-child( 2 ), label:nth-child( 3 ), label:nth-child( 8 ) {
+  display: flex;
+  flex-direction: column;
+}
+
+.alreadyHaveTrunfo {
+  text-align: center;
+}

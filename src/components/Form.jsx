@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './Form.css';
+import './Styles/Form.css';
+import TrumpValidation from './Validations/TrumpValidation';
+import TrumpValidationTwo from './Validations/TrumpValidationTwo';
 
 class Form extends Component {
   render() {
@@ -13,14 +15,14 @@ class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
     } = this.props;
 
     return (
-      <form>
+      <form className="NewCardForm">
         <h1>ADICIONE NOVA CARTA</h1>
         <label htmlFor="cardName">
           Nome da carta
@@ -92,6 +94,7 @@ class Form extends Component {
         </label>
 
         <label htmlFor="cardRare">
+          Raridade
           <select
             name="cardRare"
             id="cardRare"
@@ -105,17 +108,12 @@ class Form extends Component {
           </select>
         </label>
 
-        <label htmlFor="cardTrunfo">
-          Super Trunfo
-          <input
-            type="checkbox"
-            name="cardTrunfo"
-            id="cardTrunfo"
-            data-testid="trunfo-input"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-          />
-        </label>
+        {
+          hasTrunfo ? <TrumpValidation
+            cardTrunfo={ cardTrunfo }
+            onInputChange={ onInputChange }
+          /> : <TrumpValidationTwo />
+        }
 
         <button
           type="submit"
@@ -139,7 +137,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
