@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   cardImage: '',
   cardRare: 'normal',
   cardTrunfo: false,
-  hasTrunfo: true,
+  hasTrunfo: false,
   isSaveButtonDisabled: true,
 };
 
@@ -83,7 +83,7 @@ class App extends React.Component {
   hasTrunfo = () => {
     const { cardState } = this.state;
     cardState.some((state) => (
-      state.cardTrunfo === true ? this.setState({ hasTrunfo: false }) : ''
+      state.cardTrunfo === true ? this.setState({ hasTrunfo: true }) : ''
     ));
   };
 

@@ -109,7 +109,7 @@ class Form extends Component {
         </label>
 
         {
-          hasTrunfo ? <TrumpValidation
+          !hasTrunfo ? <TrumpValidation
             cardTrunfo={ cardTrunfo }
             onInputChange={ onInputChange }
           /> : <TrumpValidationTwo />
