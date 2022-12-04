@@ -14,6 +14,7 @@ const INITIAL_STATE = {
   cardRare: 'normal',
   cardState: [],
   pokemonType: '',
+  pokemonTypeTwo: '',
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
@@ -94,6 +95,8 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
+      pokemonType: '',
+      pokemonTypeTwo: '',
       isSaveButtonDisabled: true,
       cardTrunfo: false,
     }, this.hasTrunfo);
@@ -140,6 +143,7 @@ class App extends React.Component {
       isSaveButtonDisabled,
       cardState,
       pokemonType,
+      pokemonTypeTwo,
     } = this.state;
 
     return (
@@ -169,6 +173,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           pokemonType={ pokemonType }
+          pokemonTypeTwo={ pokemonTypeTwo }
         />
         <h2>TODAS AS CARTAS</h2>
         <div className="SavedCards">
@@ -185,6 +190,7 @@ class App extends React.Component {
                 cardRare={ state.cardRare }
                 cardTrunfo={ state.cardTrunfo }
                 pokemonType={ state.pokemonType }
+                pokemonTypeTwo={ state.pokemonTypeTwo }
                 onClickDelete={ () => (this.onClickDelete(state)) }
                 deleteButton
               />

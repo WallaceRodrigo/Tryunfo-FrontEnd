@@ -5,26 +5,106 @@
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 20px;
+  color: black;
   display: flex;
   flex-direction: column;
+  height: 650px;
+  justify-content: space-between;
   margin: 20px;
+  overflow: hidden;
   padding: 50px;
-  width: 300px;
+  width: 400px;
 }
 
-.CardDiv p {
+.CardDiv .H2 {
+  background: linear-gradient(to bottom, rgb(0, 166, 255) 0%, #4000ff9f 80%);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  rotate: -3deg;
+  width: 405px;
+}
+
+.CardDiv .H2 h2 {
+  margin-left: 15px;
+}
+
+.CardDiv .P {
   text-align: center;
 }
 
 .attrDiv {
-  background-color: orange;
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   display: flex;
+  justify-content: space-between;
   margin-top: 20px;
   text-align: center;
 }
 
-.attr h1 {
-  margin: 1px 15px;
-  padding: 1px 20px 20px;
+.attrDiv div h4 {
+  padding: 10px;
 }
+
+.CardRareCard {
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.ElementsDiv {
+  display: flex;
+}
+
+.Element img {
+  padding: 10px;
+  width: 70px;
+}
+
+.CardDiv .Input {
+  display: flex;
+  justify-content: start;
+  position: absolute;
+  top: 1470px;
+  width: 360px;
+}
+
+.CardDiv .Input input {
+  background: url('../../images/trashcan.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 35px;
+  border: none;
+  bottom: 10px;
+  height: 35px;
+  position: relative;
+  right: 10px;
+  width: 35px;
+}
+
+.rainbow {
+  font-size: 32px;
+  letter-spacing: 5px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.RTA {
+  animation: rainbow_animation 6s ease-in-out infinite;
+  background: linear-gradient(to right, #66f, #09f, lime, #f39, #66f);
+  background-clip: text;
+  background-size: 400% 100%;
+  color: transparent;
+}
+
+@keyframes rainbow_animation {
+
+  0%, 100% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 100% 0;
+  }
+}
+
+/* https://stackoverflow.com/questions/54702124/rainbow-text-animation-using-only-css */

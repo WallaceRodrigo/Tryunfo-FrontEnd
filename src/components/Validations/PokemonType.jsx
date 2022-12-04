@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../Styles/PokemonType.css';
 import PropTypes from 'prop-types';
 import Água from '../../images/Tipo_água.webp';
 import Dragão from '../../images/Tipo_dragão.webp';

@@ -103,6 +103,13 @@ class Form extends Component {
         </label>
 
         <PokemonTypeSelect onInputChange={ onInputChange } />
+        <PokemonTypeSelect
+          labelName="Segundo tipo do Pokemon (opcional)"
+          firstOption="Selecione o segundo tipo do pokemon"
+          pokemonTypeTwo="pokemonTypeTwo"
+          onInputChange={ onInputChange }
+          second
+        />
 
         <label htmlFor="cardRare" className="CardRareForm">
           Raridade
@@ -113,9 +120,10 @@ class Form extends Component {
             value={ cardRare }
             onChange={ onInputChange }
           >
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">muito raro</option>
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito raro</option>
+            <option value="lendário">Lendario</option>
           </select>
         </label>
 
@@ -139,6 +147,8 @@ class Form extends Component {
   }
 }
 
+Form.defaultProps = { onFocus: () => {} };
+
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
@@ -152,7 +162,7 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
-  onFocus: PropTypes.func.isRequired,
+  onFocus: PropTypes.func,
 };
 
 export default Form;

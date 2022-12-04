@@ -3,13 +3,20 @@ import PropTypes from 'prop-types';
 
 class PokemonTypeSelect extends Component {
   render() {
-    const { onInputChange } = this.props;
+    const {
+      onInputChange,
+      second,
+      pokemonTypeTwo,
+      labelName,
+      firstOption,
+    } = this.props;
+
     return (
       <label htmlFor="pokemonType" className="pokemonType">
-        Tipo do Pokemon
+        { labelName }
         <select
-          name="pokemonType"
-          id="pokemonType"
+          name={ pokemonTypeTwo }
+          id={ pokemonTypeTwo }
           defaultValue="Selecione o Tipo do pokemon"
           onChange={ onInputChange }
         >
@@ -17,9 +24,11 @@ class PokemonTypeSelect extends Component {
             value="Selecione o Tipo do pokemon"
             disabled
           >
-            Selecione o tipo do pokemon
+            { firstOption }
           </option>
-
+          {
+            second ? <option value="Nenhum">Nenhum</option> : ''
+          }
           <option value="Água">Água</option>
           <option value="Dragão">Dragão</option>
           <option value="Elétrico">Elétrico</option>
@@ -44,8 +53,19 @@ class PokemonTypeSelect extends Component {
   }
 }
 
+PokemonTypeSelect.defaultProps = {
+  second: false,
+  pokemonTypeTwo: 'pokemonType',
+  labelName: 'Tipo do Pokemon',
+  firstOption: 'Selecione o tipo do pokemon',
+};
+
 PokemonTypeSelect.propTypes = {
   onInputChange: PropTypes.func.isRequired,
+  second: PropTypes.bool,
+  pokemonTypeTwo: PropTypes.string,
+  labelName: PropTypes.string,
+  firstOption: PropTypes.string,
 };
 
 export default PokemonTypeSelect;
