@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import PokemonType from './Validations/PokemonType';
 import './Styles/Card.css';
 
 class Card extends Component {
@@ -15,19 +16,30 @@ class Card extends Component {
       cardTrunfo,
       deleteButton,
       onClickDelete,
+      pokemonType,
     } = this.props;
 
     return (
       <div className="CardDiv">
         <h2 data-testid="name-card">{ cardName }</h2>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <h4 data-testid="description-card">{ cardDescription }</h4>
-        <div className="attr">
-          <h1 data-testid="attr1-card">{ cardAttr1 }</h1>
-          <h1 data-testid="attr2-card">{ cardAttr2 }</h1>
-          <h1 data-testid="attr3-card">{ cardAttr3 }</h1>
+        <p data-testid="description-card">{ cardDescription }</p>
+        <PokemonType pokemonType={ pokemonType } />
+        <div className="attrDiv">
+          <div className="attr">
+            <h4>Atributo 1</h4>
+            <h1 data-testid="attr1-card">{ cardAttr1 }</h1>
+          </div>
+          <div className="attr">
+            <h4>Atributo 2</h4>
+            <h1 data-testid="attr2-card">{ cardAttr2 }</h1>
+          </div>
+          <div className="attr">
+            <h4>Atributo 3</h4>
+            <h1 data-testid="attr3-card">{ cardAttr3 }</h1>
+          </div>
         </div>
-        <h4 data-testid="rare-card">{ cardRare }</h4>
+        <h2 data-testid="rare-card">{ cardRare }</h2>
         {
           cardTrunfo ? <h3 data-testid="trunfo-card">Super Trunfo</h3> : <h3> </h3>
         }
@@ -54,6 +66,7 @@ Card.propTypes = {
   cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
+  pokemonType: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   onClickDelete: PropTypes.func,
   deleteButton: PropTypes.bool,

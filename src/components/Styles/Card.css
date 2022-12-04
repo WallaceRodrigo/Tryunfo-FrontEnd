@@ -1,15 +1,30 @@
 .CardDiv {
   align-items: center;
-  background-color: blue;
+  background-image: url('https://i.pinimg.com/originals/aa/34/e1/aa34e1c76a6569a36499ae86098759ee.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
+  margin: 20px;
   padding: 50px;
+  width: 300px;
 }
 
-.attr {
+.CardDiv p {
+  text-align: center;
+}
+
+.attrDiv {
+  background-color: orange;
+  border-radius: 10px;
   display: flex;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .attr h1 {
-  padding: 10px;
+  margin: 1px 15px;
+  padding: 1px 20px 20px;
 }

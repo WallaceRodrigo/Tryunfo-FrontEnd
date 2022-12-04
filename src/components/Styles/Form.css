@@ -19,6 +19,11 @@ label:nth-child( 2 ), label:nth-child( 3 ), label:nth-child( 8 ) {
   flex-direction: column;
 }
 
+.NewCardForm .CardRareForm {
+  display: flex;
+  flex-direction: column;
+}
+
 .alreadyHaveTrunfo {
   text-align: center;
 }
