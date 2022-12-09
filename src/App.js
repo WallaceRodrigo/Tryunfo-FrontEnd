@@ -2,7 +2,7 @@ import React from 'react';
 import FormApp from './components/Form';
 import Card from './components/Card';
 import './App.css';
-import NameFilter from './components/NameFilter';
+import Filters from './components/Filters';
 
 const INITIAL_STATE = {
   cardName: '',
@@ -16,6 +16,7 @@ const INITIAL_STATE = {
   pokemonType: '',
   pokemonTypeTwo: '',
   nameFilter: '',
+  rareFilter: '',
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
@@ -25,6 +26,14 @@ class App extends React.Component {
   state = {
     ...INITIAL_STATE,
   };
+
+  componentDidUpdate() {
+    const { rareFilter } = this.state;
+
+    if (rareFilter === 'todas') {
+      this.setState({ rareFilter: '' });
+    }
+  }
 
   saveButtonValidation = () => {
     const {
@@ -145,6 +154,7 @@ class App extends React.Component {
       cardDescriptionValidation,
       cardImageValidation,
       nameFilter,
+      rareFilter,
     } = this.state;
 
     return (
@@ -182,14 +192,21 @@ class App extends React.Component {
           />
         </div>
         <h2 className="AllCardsHeader">TODAS AS CARTAS</h2>
-        <NameFilter
+        <Filters
           onInputChange={ this.handleChange }
         />
         <div className="SavedCards">
           {
             cardState.filter((card) => (
               card.cardName.toLowerCase().includes(nameFilter.toLowerCase())
-            ))
+            )).filter((rareFilterCard) => {
+              if (rareFilter === '') {
+                return (
+                  rareFilterCard.cardRare.toLowerCase().includes(rareFilter.toLowerCase())
+                );
+              }
+              return rareFilterCard.cardRare.toLowerCase() === rareFilter.toLowerCase();
+            })
               .map((state) => (
                 <Card
                   key={ state.cardName }
