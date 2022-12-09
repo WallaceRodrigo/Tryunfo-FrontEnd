@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Styles/Form.css';
+import { Button, FloatingLabel, Form, InputGroup } from 'react-bootstrap';
 import TrumpValidation from './Validations/TrumpValidation';
 import TrumpValidationTwo from './Validations/TrumpValidationTwo';
 import PokemonTypeSelect from './Validations/PokemonTypeSelect';
 
-class Form extends Component {
+class FormApp extends Component {
   render() {
     const {
       cardName,
@@ -26,9 +27,11 @@ class Form extends Component {
     return (
       <form className="NewCardForm">
         <h1>ADICIONE NOVA CARTA</h1>
-        <label htmlFor="cardName">
-          Nome da carta
-          <input
+        <FloatingLabel
+          label="Nome do pokemon"
+          className="mb-3"
+        >
+          <Form.Control
             type="text"
             name="cardName"
             id="cardName"
@@ -36,12 +39,16 @@ class Form extends Component {
             value={ cardName }
             onChange={ onInputChange }
             onFocus={ onFocus }
+            placeholder="Nome da pokemon"
           />
-        </label>
+        </FloatingLabel>
 
-        <label htmlFor="cardDescription">
-          Descrição da carta
-          <textarea
+        <FloatingLabel
+          label="Breve descrição do pokemon"
+          className="mb-3"
+        >
+          <Form.Control
+            as="textarea"
             name="cardDescription"
             id="cardDescription"
             data-testid="description-input"
@@ -49,49 +56,54 @@ class Form extends Component {
             value={ cardDescription }
             onChange={ onInputChange }
             onFocus={ onFocus }
+            placeholder="Breve descrição do pokemon"
+            style={ { height: '100px', resize: 'none' } }
           />
-        </label>
+        </FloatingLabel>
 
-        <label htmlFor="cardAttr1">
-          Primeiro Atributo
-          <input
+        <InputGroup className="mb-3">
+          <InputGroup.Text className="basic-addon1">Primeiro Atributo</InputGroup.Text>
+          <Form.Control
+            placeholder="Força"
             type="number"
             name="cardAttr1"
             id="cardAttr1"
             data-testid="cardAttr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
-            onFocus={ onFocus }
           />
-        </label>
-        <label htmlFor="cardAttr2">
-          Segundo Atributo
-          <input
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <InputGroup.Text className="basic-addon1">Segundo Atributo</InputGroup.Text>
+          <Form.Control
+            placeholder="Defesa"
             type="number"
             name="cardAttr2"
             id="cardAttr2"
             data-testid="cardAttr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
-            onFocus={ onFocus }
           />
-        </label>
-        <label htmlFor="cardAttr3">
-          Terceiro Atributo
-          <input
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <InputGroup.Text className="basic-addon1">Terceiro Atributo</InputGroup.Text>
+          <Form.Control
+            placeholder="Agilidade"
             type="number"
             name="cardAttr3"
             id="cardAttr3"
             data-testid="cardAttr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
-            onFocus={ onFocus }
           />
-        </label>
+        </InputGroup>
 
-        <label htmlFor="cardImage">
-          Url da imagem
-          <input
+        <InputGroup className="mb-3">
+          <InputGroup.Text className="basic-addon1">Url da Imagem</InputGroup.Text>
+          <Form.Control
+            placeholder="Url com a imagem do pokemon"
             type="text"
             name="cardImage"
             id="cardImage"
@@ -100,7 +112,7 @@ class Form extends Component {
             onChange={ onInputChange }
             onFocus={ onFocus }
           />
-        </label>
+        </InputGroup>
 
         <PokemonTypeSelect onInputChange={ onInputChange } />
         <PokemonTypeSelect
@@ -111,9 +123,8 @@ class Form extends Component {
           second
         />
 
-        <label htmlFor="cardRare" className="CardRareForm">
-          Raridade
-          <select
+        <FloatingLabel label="Raridade do Pokemon" className="mb-3">
+          <Form.Select
             name="cardRare"
             id="cardRare"
             data-testid="rare-input"
@@ -123,9 +134,9 @@ class Form extends Component {
             <option value="normal">Normal</option>
             <option value="raro">Raro</option>
             <option value="muito raro">Muito raro</option>
-            <option value="lendário">Lendario</option>
-          </select>
-        </label>
+            <option value="lendário">Lendário</option>
+          </Form.Select>
+        </FloatingLabel>
 
         {
           !hasTrunfo ? <TrumpValidation
@@ -134,22 +145,25 @@ class Form extends Component {
           /> : <TrumpValidationTwo />
         }
 
-        <button
+        <Button
+          // { ...(isSaveButtonDisabled ? { variant: 'primary' } : { variant: 'success' }) }
+          variant={ isSaveButtonDisabled ? 'outline-success' : 'success' }
           type="submit"
           data-testid="save-button"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
         >
           Salvar
-        </button>
+        </Button>
+
       </form>
     );
   }
 }
 
-Form.defaultProps = { onFocus: () => {} };
+FormApp.defaultProps = { onFocus: () => {} };
 
-Form.propTypes = {
+FormApp.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
   cardAttr1: PropTypes.string.isRequired,
@@ -165,4 +179,4 @@ Form.propTypes = {
   onFocus: PropTypes.func,
 };
 
-export default Form;
+export default FormApp;

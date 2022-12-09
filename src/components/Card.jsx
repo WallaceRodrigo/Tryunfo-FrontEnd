@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PokemonType from './Validations/PokemonType';
+// import defaultPokemon from '../images/DefaultPokemon.png';
 import './Styles/Card.css';
 
 class Card extends Component {
@@ -18,15 +19,13 @@ class Card extends Component {
       onClickDelete,
       pokemonType,
       pokemonTypeTwo,
+      // cardNameValidation,
+      // cardDescriptionValidation,
+      // cardImageValidation,
     } = this.props;
 
-    const legend = cardRare === 'lendário';
-
     return (
-      <div
-        className="CardDiv"
-        style={ legend ? { outline: '5px solid gold' } : {} }
-      >
+      <div className={ `CardDiv ${cardRare}` }>
 
         <div className="Input">
           {
@@ -39,24 +38,35 @@ class Card extends Component {
           }
         </div>
 
-        <div
-          className="H2"
-          style={
-            legend
-              ? { background: 'linear-gradient(to bottom, gold 0%, goldenrod 80%)' } : {}
-          }
-        >
-          <h2 data-testid="name-card">{ cardName }</h2>
+        <div className="H2">
+          <div className="triangulo" />
+          <div className="NameColor">
+            <h2 data-testid="name-card">
+              {/* { !cardNameValidation ? 'Nome do pokemon' : cardName } */}
+              { cardName }
+            </h2>
+          </div>
           <div className="ElementsDiv">
             <PokemonType pokemonType={ pokemonType } />
             <PokemonType pokemonType={ pokemonTypeTwo } />
           </div>
         </div>
 
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" className="Ig" />
-
-        <div className="P">
-          <p data-testid="description-card">{ cardDescription }</p>
+        <div className="ImgDesc">
+          <img
+            // src={ !cardImageValidation ? defaultPokemon : cardImage }
+            src={ cardImage }
+            alt={ cardName }
+            data-testid="image-card"
+            className="Ig"
+          />
+          <p data-testid="description-card">
+            {
+              // !cardDescriptionValidation
+              //   ? 'Breve descrição sobre do pokemon' : cardDescription
+              cardDescription
+            }
+          </p>
         </div>
 
         <div className="attrDiv">
@@ -74,11 +84,7 @@ class Card extends Component {
           </div>
         </div>
 
-        <h2
-          data-testid="rare-card"
-          className="CardRareCard"
-          style={ legend ? { color: 'gold' } : {} }
-        >
+        <h2 data-testid="rare-card" className="CardRareCard">
           { cardRare }
         </h2>
 
@@ -87,6 +93,7 @@ class Card extends Component {
             ? <h3 data-testid="trunfo-card" className="rainbow RTA">Super Trunfo</h3>
             : <h3> </h3>
         }
+        <div className="triangulo2" />
       </div>
     );
   }
@@ -97,6 +104,9 @@ Card.defaultProps = {
   onClickDelete: () => {},
   pokemonType: '',
   pokemonTypeTwo: '',
+  // cardNameValidation: false,
+  // cardDescriptionValidation: false,
+  // cardImageValidation: false,
 };
 
 Card.propTypes = {
@@ -112,6 +122,9 @@ Card.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
   onClickDelete: PropTypes.func,
   deleteButton: PropTypes.bool,
+  // cardNameValidation: PropTypes.bool,
+  // cardDescriptionValidation: PropTypes.bool,
+  // cardImageValidation: PropTypes.bool,
 };
 
 export default Card;

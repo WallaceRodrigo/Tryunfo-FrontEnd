@@ -1,6 +1,5 @@
 .CardDiv {
   align-items: center;
-  background-image: url('https://i.pinimg.com/originals/aa/34/e1/aa34e1c76a6569a36499ae86098759ee.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,38 +7,64 @@
   color: black;
   display: flex;
   flex-direction: column;
-  height: 650px;
+  height: 680px;
   justify-content: space-between;
-  margin: 20px;
   overflow: hidden;
   padding: 50px;
+  transition: 200ms;
   width: 400px;
+  outline: 10px solid black;
 }
 
 .CardDiv .H2 {
-  background: linear-gradient(to bottom, rgb(0, 166, 255) 0%, #4000ff9f 80%);
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
-  rotate: -3deg;
+  transition: 200ms;
   width: 405px;
+  position: relative;
+  bottom: 50px;
+  background-color: black;
+  height: 55px;
 }
 
-.CardDiv .H2 h2 {
-  margin-left: 15px;
+.CardDiv .H2 .NameColor {
+  max-width: 300px;
+  border-bottom-right-radius: 75px;
+  border-top-right-radius: 35px;
+  border-bottom-left-radius: 45px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 5px 0 5px 38px;
+  height: 43px;
 }
 
-.CardDiv .P {
+.CardDiv .ImgDesc {
   text-align: center;
+  border: 5px solid black;
+  width: 380px;
+  height: 400px;
+  margin-bottom: 40px;
+  background-image: url('https://i.pinimg.com/originals/aa/34/e1/aa34e1c76a6569a36499ae86098759ee.jpg');
+  background-position: top -290px left 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .attrDiv {
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
   text-align: center;
+}
+
+.attrDiv div {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 110px;
 }
 
 .attrDiv div h4 {
@@ -49,22 +74,18 @@
 .CardRareCard {
   margin-top: 20px;
   text-transform: uppercase;
-}
-
-.ElementsDiv {
-  display: flex;
+  transition: 200ms;
 }
 
 .Element img {
-  padding: 10px;
-  width: 70px;
+  width: 50px;
+  margin-right: 10px;
 }
 
 .CardDiv .Input {
   display: flex;
-  justify-content: start;
+  justify-content: end;
   position: absolute;
-  top: 1470px;
   width: 360px;
 }
 
@@ -74,11 +95,16 @@
   background-repeat: no-repeat;
   background-size: 35px;
   border: none;
-  bottom: 10px;
+  top: 10px;
   height: 35px;
   position: relative;
-  right: 10px;
+  left: 10px;
+  transition: 200ms;
   width: 35px;
+}
+
+.CardDiv .Input input:hover {
+  filter: brightness(50%);
 }
 
 .rainbow {
@@ -86,6 +112,7 @@
   letter-spacing: 5px;
   text-align: center;
   text-decoration: underline;
+  transition: 200ms;
 }
 
 .RTA {
@@ -108,3 +135,81 @@
 }
 
 /* https://stackoverflow.com/questions/54702124/rainbow-text-animation-using-only-css */
+
+/* rarity colors */
+
+/* Normal Rarity */
+.normal {
+  background-image: linear-gradient(to top, gray 10%, rgba(255, 255, 255, 0) 40%), url('');
+  transition: 200ms;
+}
+
+.normal .H2 .NameColor{
+  background-color: gray;
+  transition: 200ms;
+}
+
+.normal .CardRareCard {
+  color: gray;
+}
+
+/* Rare Rarity */
+.raro {
+  background-image: linear-gradient(to top, blue 10%, rgba(255, 255, 255, 0) 40%), url('');
+  transition: 200ms;
+}
+
+.raro .H2 .NameColor {
+  background-color: blue;
+  transition: 200ms;
+}
+
+.raro .CardRareCard {
+  color: blue;
+}
+
+/* SuperRare Rarity */
+.muito {
+  background-image: linear-gradient(to top, blueviolet 10%, rgba(255, 255, 255, 0) 40%), url('');
+  transition: 200ms;
+}
+
+.muito .H2 .NameColor {
+  background-color: blueviolet;
+  transition: 200ms;
+}
+
+.muito .CardRareCard {
+  color: blueviolet;
+}
+
+/* Legend Rarity */
+.lendário {
+  background-image: linear-gradient(to top, gold 10%, rgba(255, 255, 255, 0) 40%), url('');
+  transition: 200ms;
+}
+
+.lendário .H2 .NameColor {
+  background-color: gold;
+  transition: 200ms;
+}
+
+.lendário .CardRareCard {
+  color: gold;
+  transition: 200ms;
+}
+
+.triangulo {
+  position: absolute;
+  border-left: 60px solid transparent;
+  border-bottom: 110px solid black;
+  transform: rotate(180deg);
+}
+
+.triangulo2 {
+  position: absolute;
+  margin: 540px -50px;
+  align-self: flex-end;
+  border-left: 60px solid transparent;
+  border-bottom: 90px solid black;
+}

@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 class TrumpValidationTwo extends Component {
   render() {
     return (
-      <p
-        className="alreadyHaveTrunfo"
+      <h5
+        className="alreadyHaveTrunfo mb-3"
       >
         Você já tem um Super Trunfo em seu baralho
-      </p>
+      </h5>
     );
   }
 }
