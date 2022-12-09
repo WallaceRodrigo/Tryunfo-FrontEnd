@@ -17,6 +17,7 @@ const INITIAL_STATE = {
   pokemonTypeTwo: '',
   nameFilter: '',
   rareFilter: '',
+  trunfoFilter: false,
   cardTrunfo: false,
   hasTrunfo: false,
   isSaveButtonDisabled: true,
@@ -135,6 +136,24 @@ class App extends React.Component {
     this.setState({ [`${name}Validation`]: true });
   };
 
+  card = (state) => (
+    <Card
+      key={ state.cardName }
+      cardName={ state.cardName }
+      cardDescription={ state.cardDescription }
+      cardAttr1={ state.cardAttr1 }
+      cardAttr2={ state.cardAttr2 }
+      cardAttr3={ state.cardAttr3 }
+      cardImage={ state.cardImage }
+      cardRare={ state.cardRare }
+      cardTrunfo={ state.cardTrunfo }
+      pokemonType={ state.pokemonType }
+      pokemonTypeTwo={ state.pokemonTypeTwo }
+      onClickDelete={ () => (this.onClickDelete(state)) }
+      deleteButton
+    />
+  );
+
   render() {
     const {
       cardName,
@@ -155,6 +174,7 @@ class App extends React.Component {
       cardImageValidation,
       nameFilter,
       rareFilter,
+      trunfoFilter,
     } = this.state;
 
     return (
@@ -194,36 +214,30 @@ class App extends React.Component {
         <h2 className="AllCardsHeader">TODAS AS CARTAS</h2>
         <Filters
           onInputChange={ this.handleChange }
+          trunfoFilter={ trunfoFilter }
         />
         <div className="SavedCards">
           {
-            cardState.filter((card) => (
-              card.cardName.toLowerCase().includes(nameFilter.toLowerCase())
-            )).filter((rareFilterCard) => {
-              if (rareFilter === '') {
-                return (
-                  rareFilterCard.cardRare.toLowerCase().includes(rareFilter.toLowerCase())
-                );
-              }
-              return rareFilterCard.cardRare.toLowerCase() === rareFilter.toLowerCase();
-            })
-              .map((state) => (
-                <Card
-                  key={ state.cardName }
-                  cardName={ state.cardName }
-                  cardDescription={ state.cardDescription }
-                  cardAttr1={ state.cardAttr1 }
-                  cardAttr2={ state.cardAttr2 }
-                  cardAttr3={ state.cardAttr3 }
-                  cardImage={ state.cardImage }
-                  cardRare={ state.cardRare }
-                  cardTrunfo={ state.cardTrunfo }
-                  pokemonType={ state.pokemonType }
-                  pokemonTypeTwo={ state.pokemonTypeTwo }
-                  onClickDelete={ () => (this.onClickDelete(state)) }
-                  deleteButton
-                />
+            !trunfoFilter
+              ? cardState.filter((card) => (
+                card.cardName.toLowerCase().includes(nameFilter.toLowerCase())
+              )).filter((rFilterCard) => {
+                if (rareFilter === '') {
+                  return (
+                    rFilterCard.cardRare.toLowerCase().includes(rareFilter.toLowerCase())
+                  );
+                }
+                return rFilterCard.cardRare.toLowerCase() === rareFilter.toLowerCase();
+              })
+                .map((state) => (
+                  this.card(state)
+                ))
+              : cardState.filter((card) => (
+                card.cardTrunfo === trunfoFilter
               ))
+                .map((state) => (
+                  this.card(state)
+                ))
           }
         </div>
       </div>

@@ -1,0 +1,24 @@
+.Filters {
+  align-items: center;
+  background-color: rgb(96, 143, 185);
+  display: flex;
+  justify-content: center;
+}
+
+.Filters h2 {
+  margin-right: 50px;
+}
+
+.Filters div {
+  display: flex;
+  align-items: center;
+  margin: 9px 5px 0;
+}
+
+.rareFilter {
+  width: 270px;
+}
+
+.trunfoFilter {
+  align-items: center;
+}
