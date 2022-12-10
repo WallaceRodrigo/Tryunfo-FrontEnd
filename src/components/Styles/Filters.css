@@ -1,8 +1,12 @@
 .Filters {
   align-items: center;
-  background-color: rgb(96, 143, 185);
+  background-color: rgb(115, 115, 161);
+  border-radius: 20px;
   display: flex;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }
 
 .Filters h2 {
@@ -15,8 +19,8 @@
   margin: 9px 5px 0;
 }
 
-.rareFilter {
-  width: 270px;
+.Filters .rareFilter {
+  width: 260px;
 }
 
 .trunfoFilter {

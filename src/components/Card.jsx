@@ -19,13 +19,16 @@ class Card extends Component {
       onClickDelete,
       pokemonType,
       pokemonTypeTwo,
+      savedCards,
       // cardNameValidation,
       // cardDescriptionValidation,
       // cardImageValidation,
     } = this.props;
 
+    const th = 3;
+
     return (
-      <div className={ `CardDiv ${cardRare}` }>
+      <div className={ `CardDiv ${cardRare} ${savedCards}` }>
 
         <div className="Input">
           {
@@ -39,7 +42,12 @@ class Card extends Component {
         </div>
 
         <div className="H2">
+
           <div className="triangulo" />
+          <div className="trianguloInner" />
+          <div className="trianguloInnerTwo" />
+          <div className="line" />
+
           <div className="NameColor">
             <h2 data-testid="name-card">
               {/* { !cardNameValidation ? 'Nome do pokemon' : cardName } */}
@@ -72,15 +80,15 @@ class Card extends Component {
         <div className="attrDiv">
           <div className="attr">
             <h4>Força</h4>
-            <h1 data-testid="attr1-card">{ cardAttr1 }</h1>
+            <h1 data-testid="attr1-card">{ cardAttr1.length <= th ? cardAttr1 : 0 }</h1>
           </div>
           <div className="attr">
             <h4>Defesa</h4>
-            <h1 data-testid="attr2-card">{ cardAttr2 }</h1>
+            <h1 data-testid="attr2-card">{ cardAttr2.length <= th ? cardAttr2 : 0 }</h1>
           </div>
           <div className="attr">
             <h4>Agilidade</h4>
-            <h1 data-testid="attr3-card">{ cardAttr3 }</h1>
+            <h1 data-testid="attr3-card">{ cardAttr3.length <= th ? cardAttr3 : 0 }</h1>
           </div>
         </div>
 
@@ -93,7 +101,6 @@ class Card extends Component {
             ? <h3 data-testid="trunfo-card" className="rainbow RTA">Super Trunfo</h3>
             : <h3> </h3>
         }
-        <div className="triangulo2" />
       </div>
     );
   }
@@ -104,6 +111,7 @@ Card.defaultProps = {
   onClickDelete: () => {},
   pokemonType: '',
   pokemonTypeTwo: '',
+  savedCards: '',
   // cardNameValidation: false,
   // cardDescriptionValidation: false,
   // cardImageValidation: false,
@@ -122,6 +130,7 @@ Card.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
   onClickDelete: PropTypes.func,
   deleteButton: PropTypes.bool,
+  savedCards: PropTypes.string,
   // cardNameValidation: PropTypes.bool,
   // cardDescriptionValidation: PropTypes.bool,
   // cardImageValidation: PropTypes.bool,

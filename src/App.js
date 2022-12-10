@@ -3,6 +3,7 @@ import FormApp from './components/Form';
 import Card from './components/Card';
 import './App.css';
 import Filters from './components/Filters';
+// import { savedPokemons } from './components/pokemons';
 
 const INITIAL_STATE = {
   cardName: '',
@@ -150,6 +151,7 @@ class App extends React.Component {
       pokemonType={ state.pokemonType }
       pokemonTypeTwo={ state.pokemonTypeTwo }
       onClickDelete={ () => (this.onClickDelete(state)) }
+      savedCards="savedCards"
       deleteButton
     />
   );

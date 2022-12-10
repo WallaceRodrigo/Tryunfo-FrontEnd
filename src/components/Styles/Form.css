@@ -1,7 +1,7 @@
 .NewCardForm {
-  background: linear-gradient(to bottom right, #00ff8ccc, #0091ffcc);
+  background: linear-gradient(to bottom right, #5d658d, #abaec766);
   border-radius: 10px;
-  box-shadow: 2px 2px 15px rgb(0, 255, 140);
+  box-shadow: 2px 2px 15px #534ed6;
   display: flex;
   flex-direction: column;
   padding: 10px;

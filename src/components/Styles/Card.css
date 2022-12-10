@@ -1,5 +1,6 @@
 .CardDiv {
   align-items: center;
+  background-color: #505469;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -16,11 +17,15 @@
   width: 400px;
 }
 
+.savedCards {
+  margin: 100px 10px 0;
+}
+
 .CardDiv .H2 {
   background-color: black;
   bottom: 50px;
   display: flex;
-  height: 55px;
+  height: 100px;
   justify-content: space-between;
   position: relative;
   transition: 200ms;
@@ -28,12 +33,11 @@
 }
 
 .CardDiv .H2 .NameColor {
-  border-bottom-left-radius: 45px;
-  border-bottom-right-radius: 75px;
-  border-top-right-radius: 35px;
+  border-radius: 75px 35px 75px 45px;
   height: 43px;
-  margin: 5px 0 5px 38px;
+  margin: 10px 0 5px 38px;
   max-width: 300px;
+  overflow: hidden;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -48,6 +52,14 @@
   margin-bottom: 40px;
   text-align: center;
   width: 380px;
+}
+
+.CardDiv .ImgDesc p {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 360px;
 }
 
 .attrDiv {
@@ -79,12 +91,13 @@
 
 .Element img {
   margin-right: 10px;
+  margin-top: 5px;
   width: 50px;
 }
 
 .CardDiv .Input {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   position: absolute;
   width: 360px;
 }
@@ -107,11 +120,11 @@
   filter: brightness(50%);
 }
 
+/* Rainbow text */
 .rainbow {
-  font-size: 32px;
+  font-size: 25px;
   letter-spacing: 5px;
   text-align: center;
-  text-decoration: underline;
   transition: 200ms;
 }
 
@@ -139,24 +152,43 @@
 /* rarity colors */
 
 /* Normal Rarity */
+
+@keyframes breath1 {
+
+  0% { background-position: top 100px right 0; } }
+
+@keyframes breath2 {
+
+  0% { background-position: top 100px right 0; } }
+
+@keyframes breath3 {
+
+  0% { background-position: top 100px right 0; } }
+
+@keyframes breath4 {
+
+  0% { background-position: top 100px right 0; } }
+
 .normal {
-  background-image: linear-gradient(to top, gray 10%, rgba(255, 255, 255, 0) 40%);
-  transition: 200ms;
+  animation: breath1 0.5s linear normal;
+  background-image: linear-gradient(to top, lightgreen 10%, rgba(255, 255, 255, 0)
+  40%);
 }
 
 .normal .H2 .NameColor {
-  background-color: gray;
+  background-color: lightgreen;
   transition: 200ms;
 }
 
 .normal .CardRareCard {
-  color: gray;
+  color: black;
 }
 
 /* Rare Rarity */
 .raro {
-  background-image: linear-gradient(to top, blue 10%, rgba(255, 255, 255, 0) 40%);
-  transition: 200ms;
+  animation: breath2 0.5s linear normal;
+  background-image: linear-gradient(to top, blue 10%, rgba(255, 255, 255, 0)
+  40%);
 }
 
 .raro .H2 .NameColor {
@@ -165,13 +197,14 @@
 }
 
 .raro .CardRareCard {
-  color: blue;
+  color: black;
 }
 
 /* SuperRare Rarity */
 .muito {
-  background-image: linear-gradient(to top, blueviolet 10%, rgba(255, 255, 255, 0) 40%);
-  transition: 200ms;
+  animation: breath3 0.5s linear normal;
+  background-image: linear-gradient(to top, blueviolet 10%, rgba(255, 255, 255, 0)
+  40%);
 }
 
 .muito .H2 .NameColor {
@@ -180,13 +213,14 @@
 }
 
 .muito .CardRareCard {
-  color: blueviolet;
+  color: black;
 }
 
 /* Legend Rarity */
 .lendário {
-  background-image: linear-gradient(to top, gold 10%, rgba(255, 255, 255, 0) 40%);
-  transition: 200ms;
+  animation: breath4 0.5s linear normal;
+  background-image: linear-gradient(to top, gold 10%, rgba(255, 255, 255, 0)
+  40%);
 }
 
 .lendário .H2 .NameColor {
@@ -195,21 +229,40 @@
 }
 
 .lendário .CardRareCard {
-  color: gold;
+  color: black;
   transition: 200ms;
 }
 
+/* Formas */
 .triangulo {
-  border-bottom: 110px solid black;
-  border-left: 60px solid transparent;
+  border-bottom: 100px solid black;
+  border-left: 50px solid transparent;
   position: absolute;
   transform: rotate(180deg);
 }
 
-.triangulo2 {
-  align-self: flex-end;
-  border-bottom: 90px solid black;
-  border-left: 60px solid transparent;
-  margin: 540px -50px;
+.trianguloInner {
+  border-bottom: 80px solid silver;
+  border-left: 40px solid transparent;
   position: absolute;
+  transform: rotate(180deg);
+}
+
+.trianguloInnerTwo {
+  border-bottom: 60px solid transparent;
+  border-left: 30px solid black;
+  border-radius: 80% 30% 100% 0% / 40% 0% 100% 80%;
+  margin-left: 6px;
+  margin-top: 4px;
+  position: absolute;
+}
+
+.line {
+  border-bottom: 300px solid transparent;
+  border-left: 30px solid silver;
+  clip-path: inset(3% 75% 0 10%);
+  margin-left: -10px;
+  margin-top: -55px;
+  position: absolute;
+  transform: rotate(26deg);
 }

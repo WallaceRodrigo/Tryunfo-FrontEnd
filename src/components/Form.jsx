@@ -24,6 +24,8 @@ class FormApp extends Component {
       onFocus,
     } = this.props;
 
+    const tr = 3;
+
     return (
       <form className="NewCardForm">
         <h1>ADICIONE NOVA CARTA</h1>
@@ -69,7 +71,7 @@ class FormApp extends Component {
             name="cardAttr1"
             id="cardAttr1"
             data-testid="cardAttr1-input"
-            value={ cardAttr1 }
+            value={ cardAttr1.length <= tr ? cardAttr1 : '0' }
             onChange={ onInputChange }
           />
         </InputGroup>
@@ -82,7 +84,7 @@ class FormApp extends Component {
             name="cardAttr2"
             id="cardAttr2"
             data-testid="cardAttr2-input"
-            value={ cardAttr2 }
+            value={ cardAttr2.length <= tr ? cardAttr2 : '0' }
             onChange={ onInputChange }
           />
         </InputGroup>
@@ -95,7 +97,7 @@ class FormApp extends Component {
             name="cardAttr3"
             id="cardAttr3"
             data-testid="cardAttr3-input"
-            value={ cardAttr3 }
+            value={ cardAttr3.length <= tr ? cardAttr3 : 0 }
             onChange={ onInputChange }
           />
         </InputGroup>
